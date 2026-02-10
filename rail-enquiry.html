@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rail Enquiry - A.S Tour & Travels</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-[#0F172A]">
+
+  <!-- Header -->
+  <header>
+    <div class="header-wrapper">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">✈️</span>
+        <span class="logo-text">A.S Tour & Travels</span>
+      </a>
+
+      <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="rail-enquiry.html" class="active">Rail</a>
+        <a href="flight-enquiry.html">Flight</a>
+        <a href="packages.html">Packages</a>
+        <a href="cabs.html">Cabs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="admin/login.html" class="header-cta">Admin</a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero"
+    style="background: linear-gradient(135deg, rgba(11, 28, 45, 0.5), rgba(26, 39, 65, 0.5)), url('https://images.unsplash.com/photo-1571896349842-b08d4ca9960e?w=1600&h=900&fit=crop') center/cover no-repeat fixed;">
+    <div class="hero-content">
+      <div class="hero-subtitle">Premium Rail Services</div>
+      <h1>Book Your Train Journey</h1>
+      <p>Luxury rail travel across India with personalized service and premium accommodations</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section style="padding: 5rem 2rem;">
+    <div class="container">
+      <div style="max-width: 600px; margin: 0 auto;">
+        <div class="card" style="background: var(--card-bg); border: 2px solid var(--accent); padding: 3rem;">
+          <h2 style="text-align: center; margin-bottom: 2rem; color: var(--accent);">Rail Enquiry Form</h2>
+
+          <form id="rail-form">
+            <div style="margin-bottom: 2rem;">
+              <label for="name"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your full name" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <label for="email"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Email Address
+                *</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <label for="phone"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Phone Number
+                *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+91-9876543210" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <label for="from"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">From (Station)
+                *</label>
+              <input type="text" id="from" name="from" placeholder="Departure city/station" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <label for="to" style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">To
+                (Station) *</label>
+              <input type="text" id="to" name="to" placeholder="Destination city/station" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <label for="departure-date"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Departure Date
+                *</label>
+              <input type="date" id="departure-date" name="departure-date" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <label for="passengers"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Number of
+                Passengers *</label>
+              <input type="number" id="passengers" name="passengers" min="1" max="10" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <label for="class"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Preferred Class
+                *</label>
+              <select id="class" name="class" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+                <option value="">Select class</option>
+                <option value="first_ac">First AC</option>
+                <option value="second_ac">Second AC</option>
+                <option value="third_ac">Third AC</option>
+                <option value="sleeper">Sleeper</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+              <label for="notes"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Special
+                Requirements (Optional)</label>
+              <textarea id="notes" name="notes" placeholder="Any special requests or requirements..."
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem; min-height: 100px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary"
+              style="width: 100%; padding: 1rem; font-size: 1rem; cursor: pointer;">Get Rail Quotes</button>
+          </form>
+
+          <div id="loading-message" class="hidden" style="text-align: center; margin-top: 1rem; color: var(--accent);">
+            <p>Processing your enquiry...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>A.S Tour & Travels</h4>
+        <p style="color: var(--text-muted);">Premium rail travel experiences across India.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="rail-enquiry.html">Rail Booking</a></li>
+          <li><a href="flight-enquiry.html">Flight Booking</a></li>
+          <li><a href="packages.html">Tour Packages</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul>
+          <li>📧 <a href="mailto:info@astravels.com">info@astravels.com</a></li>
+          <li>📱 +91-9876-543-210</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 A.S Tour & Travels. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-btn">💬</a>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="success-modal hidden">
+    <div class="success-content">
+      <div class="success-icon">🚂</div>
+      <h2 class="success-title">Booking Confirmed!</h2>
+      <p class="success-message">Your rail enquiry has been submitted successfully. Our team will contact you within 24
+        hours with the best train options available.</p>
+      <button class="success-close-btn" onclick="closeSuccessModal()">Continue</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { db } from './js/firebase.js';
+    import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+    function closeSuccessModal() {
+      document.getElementById('success-modal').classList.add('hidden');
+      document.getElementById('rail-form').reset();
+    }
+
+    window.closeSuccessModal = closeSuccessModal;
+
+    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+      document.getElementById('nav-menu').classList.toggle('active');
+    });
+
+    document.getElementById('rail-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      document.getElementById('loading-message').classList.remove('hidden');
+
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        from: document.getElementById('from').value,
+        to: document.getElementById('to').value,
+        departureDate: document.getElementById('departure-date').value,
+        passengers: parseInt(document.getElementById('passengers').value),
+        preferredClass: document.getElementById('class').value,
+        specialRequirements: document.getElementById('notes').value,
+        timestamp: new Date(),
+        status: 'pending'
+      };
+
+      try {
+        await addDoc(collection(db, 'rail_enquiries'), formData);
+        document.getElementById('loading-message').classList.add('hidden');
+        document.getElementById('success-modal').classList.remove('hidden');
+        setTimeout(() => {
+          document.location.href = 'index.html';
+        }, 3500);
+      } catch (error) {
+        alert('Error submitting enquiry: ' + error.message);
+        document.getElementById('loading-message').classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+
+</html>
