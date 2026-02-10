@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tour Packages - A.S Tour & Travels</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-[#0F172A]">
+
+  <!-- Header -->
+  <header>
+    <div class="header-wrapper">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">✈️</span>
+        <span class="logo-text">A.S Tour & Travels</span>
+      </a>
+
+      <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="rail-enquiry.html">Rail</a>
+        <a href="flight-enquiry.html">Flight</a>
+        <a href="packages.html" class="active">Packages</a>
+        <a href="cabs.html">Cabs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="admin/login.html" class="header-cta">Admin</a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero"
+    style="background: linear-gradient(135deg, rgba(11, 28, 45, 0.5), rgba(26, 39, 65, 0.5)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&h=900&fit=crop') center/cover no-repeat fixed;">
+    <div class="hero-content">
+      <div class="hero-subtitle">Curated Experiences</div>
+      <h1>Explore Our Packages</h1>
+      <p>Handpicked tour packages designed for the discerning traveler</p>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section style="padding: 3rem 2rem; background: #0B1C2D;">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <div>
+          <label
+            style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Destination</label>
+          <select id="destination-filter"
+            style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            <option value="">All Destinations</option>
+            <option value="bali">Bali</option>
+            <option value="dubai">Dubai</option>
+            <option value="thailand">Thailand</option>
+            <option value="singapore">Singapore</option>
+          </select>
+        </div>
+        <div>
+          <label style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Max Price</label>
+          <select id="price-filter"
+            style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            <option value="">Any Price</option>
+            <option value="50000">Under ₹50,000</option>
+            <option value="100000">Under ₹100,000</option>
+            <option value="200000">Under ₹200,000</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages Grid -->
+  <section style="padding: 5rem 2rem;">
+    <div class="container">
+      <div id="packages-grid" class="grid grid-2">
+        <div class="skeleton" style="height: 400px;"></div>
+        <div class="skeleton" style="height: 400px;"></div>
+        <div class="skeleton" style="height: 400px;"></div>
+        <div class="skeleton" style="height: 400px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <!-- Footer -->
+  <style>
+    /* Footer Styles Override for Packages Page */
+    footer {
+      background-color: #0f172a;
+      color: white;
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+      border-top: 1px solid #1e293b;
+    }
+
+    .footer-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer-col h3 {
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-desc {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .app-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .app-btn {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: all 0.3s;
+    }
+
+    .app-btn:hover {
+      background: #334155;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-links a:hover {
+      color: #f97316;
+      /* Orange highlight */
+      padding-left: 5px;
+    }
+
+    .contact-info li {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      background: #f97316;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+    }
+  </style>
+  <footer>
+    <div class="footer-wrapper">
+      <!-- Brand Col -->
+      <div class="footer-col footer-logo-section">
+        <div
+          style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: #f97316; font-weight: 800; font-size: 1.5rem;">
+          <span>✈️</span> A.S TOURS
+        </div>
+        <p class="footer-desc">We serve solo travelers, families, business clients, and tourists with equal dedication.
+        </p>
+        <div class="app-buttons">
+          <a href="#" class="app-btn">
+            <span></span>
+            <div>
+              <div style="font-size: 0.6rem;">Download on the</div>
+              <div style="font-weight: 700;">App Store</div>
+            </div>
+          </a>
+          <a href="#" class="app-btn">
+            <span>▶</span>
+            <div>
+              <div style="font-size: 0.6rem;">Get it on</div>
+              <div style="font-weight: 700;">Google Play</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links Col -->
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">About Us</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="cabs.html">Our Cabs</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services Col -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="#">Local City Rides</a></li>
+          <li><a href="#">Outstation Trips</a></li>
+          <li><a href="#">Airport Transfers</a></li>
+          <li><a href="#">Tour Packages</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Col -->
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <ul class="contact-info">
+          <li>
+            <span>📍</span>
+            <span>5 Main Rd, Gwalior, Madhya Pradesh</span>
+          </li>
+          <li>
+            <span>📧</span>
+            <a href="mailto:info@astravels.com" style="color: inherit; text-decoration: none;">info@astravels.com</a>
+          </li>
+          <li>
+            <span>📞</span>
+            <span>+91-9876-543-210</span>
+          </li>
+        </ul>
+        <div class="social-icons">
+          <a href="#" class="social-link">f</a>
+          <a href="#" class="social-link">t</a>
+          <a href="#" class="social-link">in</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 3rem; color: #475569; font-size: 0.9rem;">
+      &copy; 2026 A.S Tour & Travels. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Floating Actions (WhatsApp & Call) -->
+  <div class="floating-actions">
+    <a href="tel:+918319920776" class="floating-btn btn-call" title="Call Us Now">📞</a>
+    <a href="https://wa.me/918319920776" target="_blank" class="floating-btn btn-whatsapp" title="WhatsApp Us">💬</a>
+  </div>
+
+  <!-- Booking Modal -->
+  <div id="booking-modal" class="modal-overlay"
+    style="position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; display: none; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+    <div class="card"
+      style="width: 90%; max-width: 500px; background: #fff; color: #1e293b; padding: 2rem; border-radius: 1rem; max-height: 90vh; overflow-y: auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <h3 style="margin: 0;">Book Package</h3>
+          <div class="promise-tag" style="margin-top: 5px;">10 min call back guarantee</div>
+        </div>
+        <button onclick="closeModal()"
+          style="background: none; border: none; font-size: 1.5rem; color: #64748b; cursor: pointer;">×</button>
+      </div>
+
+      <div id="booking-step-1">
+        <form id="booking-form">
+          <input type="hidden" id="selected-pkg-id">
+          <input type="hidden" id="selected-pkg-title">
+
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Selected Package</label>
+            <p id="modal-pkg-name" style="color: #f97316; font-size: 1.1rem; font-weight: 700;"></p>
+          </div>
+
+          <input type="text" id="customer-name" placeholder="Your Name" required
+            style="width: 100%; margin-bottom: 1rem; padding: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; color: #1e293b; border-radius: 0.5rem;">
+          <input type="tel" id="customer-phone" placeholder="Phone Number" required
+            style="width: 100%; margin-bottom: 1rem; padding: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; color: #1e293b; border-radius: 0.5rem;">
+          <div style="margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600;">Travel Date</div>
+          <input type="date" id="travel-date" required
+            style="width: 100%; margin-bottom: 1rem; padding: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; color: #1e293b; border-radius: 0.5rem;">
+
+          <input type="number" id="travelers" placeholder="Number of Travelers" required min="1"
+            style="width: 100%; margin-bottom: 1rem; padding: 0.75rem; background: #f8fafc; border: 1px solid #e2e8f0; color: #1e293b; border-radius: 0.5rem;">
+
+          <button type="submit" class="book-btn"
+            style="width: 100%; background: #f97316; color: white; padding: 0.75rem; border-radius: 0.5rem; font-weight: 600;">Continue
+            to Payment</button>
+        </form>
+      </div>
+
+      <div id="booking-step-2" style="display: none; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+        <h3 style="color: #10b981; margin-bottom: 1rem;">Booking Details Submitted!</h3>
+        <p style="color: #64748b; margin-bottom: 1.5rem;">Please scan the QR code below to complete your payment of
+          <b>₹1000</b> (Booking Token).
+        </p>
+
+        <div id="qr-container"
+          style="min-height: 200px; display: flex; align-items: center; justify-content: center; background: #fff; margin: 0 auto 1.5rem auto; width: 220px; padding: 10px; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
+          <p style="color: #64748b;">Loading QR...</p>
+        </div>
+
+        <button onclick="closeModal()" class="book-btn"
+          style="width: 100%; background: #0f172a; color: white; padding: 0.75rem; border-radius: 0.5rem; font-weight: 600;">Done
+          / I have Paid</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { loadAllPackages } from './js/packages.js';
+    import { db } from './js/firebase.js';
+    import { collection, addDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    await loadAllPackages('#packages-grid');
+
+    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+      document.getElementById('nav-menu').classList.toggle('active');
+    });
+
+    // --- QR Code Logic ---
+    async function loadQR() {
+      try {
+        const docSnap = await getDoc(doc(db, 'settings', 'payment'));
+        if (docSnap.exists() && docSnap.data().qrUrl) {
+          document.getElementById('qr-container').innerHTML = `
+            <img src="${docSnap.data().qrUrl}" alt="Payment QR" style="width: 100%; height: 100%; object-fit: contain;">
+          `;
+        } else {
+          document.getElementById('qr-container').innerHTML = `<p>QR Not Available</p>`;
+        }
+      } catch (error) {
+        console.error("QR Load Error:", error);
+      }
+    }
+
+    // --- Modal Logic ---
+    window.enquirePackage = function (id, title) {
+      document.getElementById('booking-step-1').style.display = 'block';
+      document.getElementById('booking-step-2').style.display = 'none';
+      document.getElementById('booking-form').reset();
+
+      document.getElementById('selected-pkg-id').value = id;
+      document.getElementById('selected-pkg-title').value = title;
+      document.getElementById('modal-pkg-name').textContent = title || "Selected Tour Package";
+
+      document.getElementById('booking-modal').style.display = 'flex';
+      loadQR();
+    };
+
+    window.closeModal = function () {
+      document.getElementById('booking-modal').style.display = 'none';
+    };
+
+    document.getElementById('booking-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+
+      try {
+        await addDoc(collection(db, 'package_bookings'), {
+          packageId: document.getElementById('selected-pkg-id').value,
+          packageTitle: document.getElementById('selected-pkg-title').value,
+          customerName: document.getElementById('customer-name').value,
+          customerPhone: document.getElementById('customer-phone').value,
+          travelDate: document.getElementById('travel-date').value,
+          travelers: document.getElementById('travelers').value,
+          status: 'pending_payment',
+          timestamp: new Date()
+        });
+
+        // Show Step 2
+        document.getElementById('booking-step-1').style.display = 'none';
+        document.getElementById('booking-step-2').style.display = 'block';
+
+      } catch (error) {
+        console.error(error);
+        alert('Error: ' + error.message + '\nPlease check your connection or database permissions.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Continue to Payment';
+      }
+    });
+
+    // Sticky Header Logic
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+  </script>
+</body>
+
+</html>

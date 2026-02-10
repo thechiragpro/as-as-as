@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Flight Form - Working Check</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#0F172A]" style="padding: 3rem 2rem;">
+
+<div style="max-width: 700px; margin: 0 auto; color: #E5E7EB;">
+  <h1 style="text-align: center; color: #F4C430; margin-bottom: 2rem; font-family: 'Playfair Display', serif;">🧪 Flight Form - Quick Test</h1>
+
+  <div class="card" style="background: var(--card-bg); border: 2px solid var(--accent); padding: 3rem; margin-bottom: 2rem;">
+    <h2 style="text-align: center; margin-bottom: 2rem; color: var(--accent);">Quick Tests</h2>
+
+    <div style="background: #1A2741; padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
+      <h3 style="color: #F4C430; margin-bottom: 1rem;">✅ Test 1: Round Trip Toggle</h3>
+      <p style="color: #9CA3AF; margin-bottom: 1rem;">Instructions:</p>
+      <ol style="color: #9CA3AF; margin-left: 1.5rem;">
+        <li>Click the buttons below</li>
+        <li>Watch the color change (gold = selected)</li>
+        <li>Check if "Return Date" field appears</li>
+      </ol>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+        <button id="one-way-btn" type="button" onclick="testSetTripType('one-way')" style="padding: 0.75rem; background: var(--accent); color: var(--primary); border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 1rem;">✈️ One Way</button>
+        <button id="round-trip-btn" type="button" onclick="testSetTripType('round-trip')" style="padding: 0.75rem; background: transparent; color: var(--text); border: 2px solid var(--accent); border-radius: 0.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 1rem;">🔄 Round Trip</button>
+      </div>
+
+      <div id="return-date-container" style="display: none; background: #0B1C2D; padding: 1rem; border-radius: 0.5rem; border-left: 3px solid var(--accent);">
+        <p style="color: #10B981; font-weight: 600;">✅ Return Date Field Visible!</p>
+        <p style="color: #9CA3AF; margin-top: 0.5rem;">This appears when "Round Trip" is selected</p>
+      </div>
+
+      <p id="trip-status" style="color: #9CA3AF; margin-top: 1.5rem; padding: 1rem; background: #0B1C2D; border-radius: 0.5rem;">Status: <span style="color: #F4C430;">One Way Selected</span></p>
+    </div>
+
+    <div style="background: #1A2741; padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
+      <h3 style="color: #F4C430; margin-bottom: 1rem;">✅ Test 2: WhatsApp Button</h3>
+      <p style="color: #9CA3AF; margin-bottom: 1rem;">Click the WhatsApp button below (bottom right). It should open WhatsApp, NOT redirect the page.</p>
+      
+      <button onclick="window.open('https://wa.me/919876543210', '_blank')" style="border: none; background: #25D366; cursor: pointer; padding: 1rem 2rem; border-radius: 0.5rem; color: white; font-weight: 600; font-size: 1rem;">💬 Test WhatsApp Button</button>
+      
+      <p style="color: #10B981; margin-top: 1rem;">✅ If WhatsApp opened in new window = WORKING</p>
+      <p style="color: #EF4444;">❌ If page redirected = NOT WORKING</p>
+    </div>
+
+    <div style="background: #1A2741; padding: 1.5rem; border-radius: 0.5rem;">
+      <h3 style="color: #F4C430; margin-bottom: 1rem;">✅ Test 3: Success Modal</h3>
+      <p style="color: #9CA3AF; margin-bottom: 1rem;">Click button to see success modal animation</p>
+      
+      <button onclick="showTestModal()" style="padding: 0.75rem 1.5rem; background: var(--accent); color: var(--primary); border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer;">Show Success Modal</button>
+      
+      <p style="color: #9CA3AF; margin-top: 1rem;">Modal should appear with animation, gold border, and auto-close after 3.5 seconds.</p>
+    </div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, #1A2741, #111827); border: 2px solid #F4C430; border-radius: 0.75rem; padding: 2rem; margin-top: 2rem;">
+    <h3 style="color: #F4C430; margin-bottom: 1rem;">📝 Console Logs</h3>
+    <p style="color: #9CA3AF; margin-bottom: 1rem;">Open your browser's Developer Tools (F12) → Console tab</p>
+    <p style="color: #9CA3AF;">When you click buttons, you'll see console messages like:</p>
+    <div style="background: #0B1C2D; padding: 1rem; border-radius: 0.5rem; margin-top: 1rem; font-family: monospace; color: #10B981; overflow-x: auto;">
+Trip type selected: round-trip<br>
+Showing return date field
+    </div>
+  </div>
+
+  <div style="background: linear-gradient(135deg, #1A2741, #111827); border: 2px solid #F4C430; border-radius: 0.75rem; padding: 2rem; margin-top: 2rem;">
+    <h3 style="color: #F4C430; margin-bottom: 1rem;">✅ All Tests Passing?</h3>
+    <p style="color: #10B981; font-weight: 600;">✓ Round trip toggle works</p>
+    <p style="color: #10B981; font-weight: 600;">✓ Return date appears/disappears</p>
+    <p style="color: #10B981; font-weight: 600;">✓ WhatsApp opens in new window</p>
+    <p style="color: #10B981; font-weight: 600;">✓ Success modal animates</p>
+    <p style="color: #F4C430; margin-top: 1rem; font-weight: 600;">Then go to flight-enquiry.html and test the actual form!</p>
+  </div>
+</div>
+
+<!-- Success Modal for Testing -->
+<div id="test-modal" class="success-modal hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); display: none; z-index: 2000; align-items: center; justify-content: center;">
+  <div class="success-content" style="background: linear-gradient(135deg, var(--card-bg), var(--secondary)); border: 2px solid var(--accent); border-radius: 1rem; padding: 3rem; max-width: 500px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(244, 196, 48, 0.2);">
+    <div class="success-icon" style="font-size: 4rem; margin-bottom: 1rem;">✈️</div>
+    <h2 class="success-title" style="font-size: 1.75rem; color: var(--accent); margin-bottom: 0.5rem;">Test Successful!</h2>
+    <p class="success-message" style="color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6;">This modal works perfectly. It auto-closes after 3.5 seconds.</p>
+    <button class="success-close-btn" onclick="closeTestModal()" style="background: var(--accent); color: var(--primary); padding: 0.75rem 2rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer;">Close Modal</button>
+  </div>
+</div>
+
+<script>
+  function testSetTripType(type) {
+    console.log('Trip type selected:', type);
+    const container = document.getElementById('return-date-container');
+    const oneWayBtn = document.getElementById('one-way-btn');
+    const roundTripBtn = document.getElementById('round-trip-btn');
+    const statusEl = document.getElementById('trip-status');
+
+    if (type === 'round-trip') {
+      console.log('Showing return date field');
+      container.style.display = 'block';
+      oneWayBtn.style.background = 'transparent';
+      oneWayBtn.style.color = 'var(--text)';
+      oneWayBtn.style.border = '2px solid var(--accent)';
+      roundTripBtn.style.background = 'var(--accent)';
+      roundTripBtn.style.color = 'var(--primary)';
+      roundTripBtn.style.border = 'none';
+      statusEl.innerHTML = 'Status: <span style="color: #F4C430;">Round Trip Selected ✅</span>';
+    } else {
+      console.log('Hiding return date field');
+      container.style.display = 'none';
+      oneWayBtn.style.background = 'var(--accent)';
+      oneWayBtn.style.color = 'var(--primary)';
+      oneWayBtn.style.border = 'none';
+      roundTripBtn.style.background = 'transparent';
+      roundTripBtn.style.color = 'var(--text)';
+      roundTripBtn.style.border = '2px solid var(--accent)';
+      statusEl.innerHTML = 'Status: <span style="color: #F4C430;">One Way Selected ✅</span>';
+    }
+  }
+
+  function showTestModal() {
+    const modal = document.getElementById('test-modal');
+    modal.style.display = 'flex';
+    setTimeout(() => {
+      closeTestModal();
+    }, 3500);
+  }
+
+  function closeTestModal() {
+    document.getElementById('test-modal').style.display = 'none';
+  }
+
+  // Initialize
+  console.log('🧪 Test page loaded. All functions ready!');
+  testSetTripType('one-way');
+</script>
+
+</body>
+</html>

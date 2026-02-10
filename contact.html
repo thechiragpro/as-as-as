@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - A.S Tour & Travels</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-[#0F172A]">
+
+  <!-- Header -->
+  <header>
+    <div class="header-wrapper">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">✈️</span>
+        <span class="logo-text">A.S Tour & Travels</span>
+      </a>
+
+      <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="rail-enquiry.html">Rail</a>
+        <a href="flight-enquiry.html">Flight</a>
+        <a href="packages.html">Packages</a>
+        <a href="cabs.html">Cabs</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="admin/login.html" class="header-cta">Admin</a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero"
+    style="background: linear-gradient(135deg, rgba(11, 28, 45, 0.5), rgba(26, 39, 65, 0.5)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&h=900&fit=crop') center/cover no-repeat fixed;">
+    <div class="hero-content">
+      <div class="hero-subtitle">Get in Touch</div>
+      <h1>Contact Our Team</h1>
+      <p>We're here to help and answer any questions you might have</p>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section style="padding: 5rem 2rem;">
+    <div class="container">
+      <div class="grid grid-2" style="gap: 3rem;">
+        <!-- Contact Info -->
+        <div>
+          <h2 style="margin-bottom: 2rem;">Let's Talk</h2>
+          <div style="margin-bottom: 2rem;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Phone</h4>
+            <p style="color: var(--text-muted);">
+              <a href="tel:+918319920776" style="color: var(--accent);">+91 83199 20776</a><br>
+              Available 24/7
+            </p>
+          </div>
+          <div style="margin-bottom: 2rem;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Email</h4>
+            <p style="color: var(--text-muted);">
+              <a href="mailto:info@astravels.com" style="color: var(--accent);">info@astravels.com</a><br>
+              We respond within 24 hours
+            </p>
+          </div>
+          <div style="margin-bottom: 2rem;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Address</h4>
+            <p style="color: var(--text-muted);">
+              Shop No. 5, Nagar Nigam Market, Bus Stand,<br>
+              Indramani Nagar, Thatipur,<br>
+              Gwalior, Madhya Pradesh 474005
+            </p>
+          </div>
+          <div style="margin-bottom: 2rem;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">WhatsApp</h4>
+            <p style="color: var(--text-muted);">
+              <a href="https://wa.me/918319920776" style="color: var(--accent);">Send us a message</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="card" style="background: var(--card-bg); border: 2px solid var(--accent); padding: 2rem;">
+          <h3 style="margin-bottom: 1.5rem; color: var(--accent);">Send us a Message</h3>
+          <form id="contact-form">
+            <div style="margin-bottom: 1.5rem;">
+              <label for="name"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Full Name *</label>
+              <input type="text" id="name" name="name" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <label for="email"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Email Address
+                *</label>
+              <input type="email" id="email" name="email" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <label for="phone"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Phone
+                Number</label>
+              <input type="tel" id="phone" name="phone"
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <label for="subject"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Subject *</label>
+              <input type="text" id="subject" name="subject" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem;">
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+              <label for="message"
+                style="color: var(--text); font-weight: 600; display: block; margin-bottom: 0.5rem;">Message *</label>
+              <textarea id="message" name="message" required
+                style="width: 100%; padding: 0.75rem; background: var(--primary); border: 1px solid var(--border); color: var(--text); border-radius: 0.5rem; min-height: 150px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Send Message</button>
+          </form>
+
+          <div id="form-message" class="hidden"
+            style="margin-top: 1rem; padding: 1rem; background: var(--primary); border-left: 4px solid var(--accent); color: var(--text); border-radius: 0.5rem;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>A.S Tour & Travels</h4>
+        <p style="color: var(--text-muted);">Your premium travel partner in India.</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+          📍 Shop No. 5, Nagar Nigam Market, Bus Stand, Indramani Nagar, Thatipur, Gwalior, MP 474005
+        </p>
+        <p style="margin-top: 0.5rem;">
+          <a href="https://www.google.com/maps/search/?api=1&query=A.S+Tour+and+travels+Gwalior" target="_blank"
+            style="color: var(--accent); font-size: 0.9rem;">Opne in Google Maps ↗</a>
+        </p>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="rail-enquiry.html">Rail Booking</a></li>
+          <li><a href="flight-enquiry.html">Flight Booking</a></li>
+          <li><a href="packages.html">Tour Packages</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul>
+          <li>📧 <a href="mailto:info@astravels.com">info@astravels.com</a></li>
+          <li>📱 <a href="tel:+918319920776">+91 83199 20776</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 A.S Tour & Travels. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/918319920776" target="_blank" class="whatsapp-btn">💬</a>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="success-modal hidden">
+    <div class="success-content">
+      <div class="success-icon">📧</div>
+      <h2 class="success-title">Message Sent!</h2>
+      <p class="success-message">Thank you for contacting us. We've received your message and will get back to you as
+        soon as possible. We appreciate your interest!</p>
+      <button class="success-close-btn" onclick="closeSuccessModal()">Done</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { db } from './js/firebase.js';
+    import { collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+    function closeSuccessModal() {
+      document.getElementById('success-modal').classList.add('hidden');
+      document.getElementById('contact-form').reset();
+    }
+
+    window.closeSuccessModal = closeSuccessModal;
+
+    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+      document.getElementById('nav-menu').classList.toggle('active');
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const messageEl = document.getElementById('form-message');
+
+      try {
+        const formData = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          subject: document.getElementById('subject').value,
+          message: document.getElementById('message').value,
+          timestamp: new Date(),
+          status: 'pending'
+        };
+
+        await addDoc(collection(db, 'contact_messages'), formData);
+
+        document.getElementById('success-modal').classList.remove('hidden');
+        setTimeout(() => {
+          document.location.href = 'index.html';
+        }, 3500);
+      } catch (error) {
+        messageEl.classList.remove('hidden');
+        messageEl.textContent = '❌ Error sending message. Please try again.';
+        messageEl.style.borderLeftColor = '#EF4444';
+      }
+    });
+  </script>
+</body>
+
+</html>

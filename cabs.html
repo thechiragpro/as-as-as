@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cab Services - A.S Tour & Travels</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+<body class="bg-[#0F172A] text-[#E5E7EB]">
+
+  <style>
+    /* Dark Luxury Theme for Cabs */
+    :root {
+      --primary: #0B1C2D;
+      --accent: #F4C430;
+      --card-bg: #1A2741;
+      --text: #E5E7EB;
+      --text-muted: #9CA3AF;
+      --border: #1F2937;
+    }
+
+    .cab-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cab-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(244, 196, 48, 0.1);
+    }
+
+    .cab-price {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .cab-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .cab-details-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+      text-align: left;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      width: 100%;
+    }
+
+    .cab-details-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .cab-details-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .book-btn {
+      background: var(--accent);
+      color: var(--primary);
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .book-btn:hover {
+      background: #FFD700;
+      transform: scale(1.02);
+    }
+
+    /* Modal Styling Update */
+    .modal-overlay {
+      background-color: rgba(0, 0, 0, 0.85);
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+      color: var(--text);
+    }
+
+    .modal-card input,
+    .modal-card select {
+      background: var(--primary);
+      border: 1px solid var(--border);
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .modal-card input:focus {
+      border-color: var(--accent);
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+  </style>
+
+  <!-- Header -->
+  <header>
+    <div class="header-wrapper">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">✈️</span>
+        <span class="logo-text">A.S Tour & Travels</span>
+      </a>
+
+      <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="rail-enquiry.html">Rail</a>
+        <a href="flight-enquiry.html">Flight</a>
+        <a href="packages.html">Packages</a>
+        <a href="cabs.html" class="active">Cabs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="admin/login.html" class="header-cta">Admin</a>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero"
+    style="background: linear-gradient(135deg, rgba(11, 28, 45, 0.7), rgba(26, 39, 65, 0.7)), url('https://images.unsplash.com/photo-1464219414232-08c90d94c116?w=1600&h=900&fit=crop') center/cover no-repeat fixed; height: 50vh;">
+    <div class="hero-content">
+      <div class="hero-subtitle">Premium Transportation</div>
+      <h1>Luxury Cab Services</h1>
+      <p>Professional drivers, well-maintained vehicles, and exceptional service</p>
+    </div>
+  </section>
+
+  <!-- Cabs Grid -->
+  <section style="padding: 5rem 2rem;">
+    <div class="container">
+      <div class="section-header">
+        <h2 style="color: #111827;">Our Fleet</h2>
+        <p style="color: #6b7280;">Choose the perfect ride for your journey</p>
+      </div>
+      <div id="cabs-grid" class="grid grid-3" style="column-gap: 2rem; row-gap: 3rem;">
+        <!-- Cabs will be loaded here via JS -->
+        <div class="skeleton" style="height: 400px; background: #e2e8f0; border-radius: 12px;"></div>
+        <div class="skeleton" style="height: 400px; background: #e2e8f0; border-radius: 12px;"></div>
+        <div class="skeleton" style="height: 400px; background: #e2e8f0; border-radius: 12px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section style="padding: 5rem 2rem; background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <h2 style="color: #111827;">Why Choose Us?</h2>
+        <p style="color: #6b7280;">Experience the best in class service</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card" style="background: #f8fafc; border: none; box-shadow: none;">
+          <div class="card-icon" style="background: #fff; color: #f97316;">👨‍💼</div>
+          <h3 style="color: #1e293b;">Professional Drivers</h3>
+          <p style="color: #64748b;">Trained and experienced drivers with excellent service records</p>
+        </div>
+        <div class="card" style="background: #f8fafc; border: none; box-shadow: none;">
+          <div class="card-icon" style="background: #fff; color: #f97316;">🚗</div>
+          <h3 style="color: #1e293b;">Well-Maintained Fleet</h3>
+          <p style="color: #64748b;">Modern vehicles with regular maintenance and safety checks</p>
+        </div>
+        <div class="card" style="background: #f8fafc; border: none; box-shadow: none;">
+          <div class="card-icon" style="background: #fff; color: #f97316;">⏰</div>
+          <h3 style="color: #1e293b;">24/7 Availability</h3>
+          <p style="color: #64748b;">Round-the-clock service whenever you need us</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-wrapper">
+      <!-- Brand Col -->
+      <div class="footer-col footer-logo-section">
+        <div
+          style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: #f97316; font-weight: 800; font-size: 1.5rem;">
+          <span>✈️</span> A.S TOURS
+        </div>
+        <p class="footer-desc">We serve solo travelers, families, business clients, and tourists with equal dedication.
+        </p>
+        <div class="app-buttons">
+          <a href="#" class="app-btn">
+            <span></span>
+            <div>
+              <div style="font-size: 0.6rem;">Download on the</div>
+              <div style="font-weight: 700;">App Store</div>
+            </div>
+          </a>
+          <a href="#" class="app-btn">
+            <span>▶</span>
+            <div>
+              <div style="font-size: 0.6rem;">Get it on</div>
+              <div style="font-weight: 700;">Google Play</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links Col -->
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">About Us</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="cabs.html">Our Cabs</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services Col -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="#">Local City Rides</a></li>
+          <li><a href="#">Outstation Trips</a></li>
+          <li><a href="#">Airport Transfers</a></li>
+          <li><a href="#">Tour Packages</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Col -->
+      <div class="footer-col">
+        <h3>Contact Info</h3>
+        <ul class="contact-info">
+          <li>
+            <span>📍</span>
+            <span>5 Main Rd, Gwalior, Madhya Pradesh</span>
+          </li>
+          <li>
+            <span>📧</span>
+            <a href="mailto:info@astravels.com" style="color: inherit; text-decoration: none;">info@astravels.com</a>
+          </li>
+          <li>
+            <span>📞</span>
+            <span>+91-9876-543-210</span>
+          </li>
+        </ul>
+        <div class="social-icons">
+          <a href="#" class="social-link">f</a>
+          <a href="#" class="social-link">t</a>
+          <a href="#" class="social-link">in</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 3rem; color: #475569; font-size: 0.9rem;">
+      &copy; 2026 A.S Tour & Travels. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+
+
+  <!-- Booking Modal -->
+  <div id="booking-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--accent); margin: 0;">Book
+            Cab</h3>
+          <div class="promise-tag" style="margin-top: 5px;">10 min call back promise</div>
+        </div>
+        <button onclick="closeModal()"
+          style="background: none; border: none; font-size: 2rem; color: var(--text-muted); cursor: pointer; line-height: 1;">×</button>
+      </div>
+
+      <div id="booking-step-1">
+        <form id="booking-form">
+          <input type="hidden" id="selected-cab-id">
+          <input type="hidden" id="selected-cab-title">
+
+          <div
+            style="margin-bottom: 1.5rem; background: rgba(244, 196, 48, 0.05); padding: 1rem; border-radius: 0.5rem; border-left: 4px solid var(--accent);">
+            <label
+              style="display: block; margin-bottom: 0.25rem; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Selected
+              Vehicle</label>
+            <p id="modal-cab-name" style="color: var(--text); font-size: 1.25rem; font-weight: 700; margin: 0;"></p>
+          </div>
+
+          <input type="text" id="customer-name" placeholder="Your Name" required>
+          <input type="tel" id="customer-phone" placeholder="Phone Number" required>
+          <div style="margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600;">Travel Date</div>
+          <input type="date" id="travel-date" required>
+          <input type="text" id="pickup-loc" placeholder="Pickup Location" required>
+          <input type="text" id="drop-loc" placeholder="Drop Location" required>
+
+          <button type="submit" class="book-btn" style="margin-top: 1rem;">Continue to Payment</button>
+        </form>
+      </div>
+
+      <div id="booking-step-2" style="display: none; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+        <h3 style="color: #10b981; margin-bottom: 1rem;">Booking Details Submitted!</h3>
+        <p style="color: #64748b; margin-bottom: 1.5rem;">Please scan the QR code below to complete your payment of
+          <b>₹500</b> (Booking Amount).
+        </p>
+
+        <div id="qr-container"
+          style="min-height: 200px; display: flex; align-items: center; justify-content: center; background: #fff; margin: 0 auto 1.5rem auto; width: 220px; padding: 10px; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
+          <p style="color: #64748b;">Loading QR...</p>
+        </div>
+
+        <button onclick="closeModal()" class="book-btn" style="width: 100%; background: #0f172a;">Done / I have
+          Paid</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { db } from './js/firebase.js';
+    import { collection, onSnapshot, query, where, addDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    // 1. Initial Load
+    initCabs();
+
+    // 2. Fetch Cabs Logic
+    function initCabs() {
+      // Using strict active check. If nothing shows, try removing the where clause to debug.
+      const q = query(collection(db, 'cabs'), where('status', '==', 'active'));
+
+      onSnapshot(q, (snapshot) => {
+        const grid = document.getElementById('cabs-grid');
+
+        if (snapshot.empty) {
+          grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #64748b;">No cabs available at the moment. Please check back later.</div>';
+          return;
+        }
+
+        grid.innerHTML = snapshot.docs.map(doc => {
+          const cab = doc.data();
+          const id = doc.id;
+          const title = cab.title || cab.name || 'Cab';
+          const image = cab.image || 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&q=80';
+
+          return `
+                <div class="cab-card" style="position: relative;">
+                    ${cab.badgeText ? `<div class="badge-offer">${cab.badgeText}</div>` : ''}
+                    <div class="cab-image-container">
+                        <img src="${image}" alt="${title}" class="cab-image">
+                    </div>
+                    
+                    ${cab.isPopular ? `<div class="badge-popular">🔥 Top Rated Choice</div>` : ''}
+                    <div class="cab-price">₹${cab.price}/Km</div>
+                    <h3 class="cab-title">${title}</h3>
+                    
+                    <ul class="cab-details-list">
+                        <li>PerDay Charge: ₹${Math.floor(cab.price * 250)}/Day (Est.)</li>
+                        <li>Passengers: ${cab.seats || '4'}+1</li>
+                        <li>Type: ${cab.carType || 'Standard'}</li>
+                        <li>AC: ${cab.ac ? 'Available' : 'Non-AC'}</li>
+                    </ul>
+
+                    <button onclick="window.openBooking('${id}', '${title.replace(/'/g, "\\\'")}')" class="book-btn">Book Now</button>
+                    ${cab.seatsRemaining ? `<div class="urgency-text" style="justify-content:center; margin-top:10px;">⚠️ Only few vehicles left!</div>` : ''}
+                </div>
+                `;
+        }).join('');
+      });
+    }
+
+    // 3. QR Code Logic
+    async function loadQR() {
+      try {
+        const docSnap = await getDoc(doc(db, 'settings', 'payment'));
+        if (docSnap.exists() && docSnap.data().qrUrl) {
+          document.getElementById('qr-container').innerHTML = `
+                    <img src="${docSnap.data().qrUrl}" alt="Payment QR" style="width: 100%; height: 100%; object-fit: contain;">
+                `;
+        } else {
+          document.getElementById('qr-container').innerHTML = `<p style="color:black;">QR Not Available</p>`;
+        }
+      } catch (error) {
+        console.error("QR Load Error:", error);
+        document.getElementById('qr-container').innerHTML = `<p style="color:red;">Error loading QR</p>`;
+      }
+    }
+
+    // 4. Booking Logic
+    window.openBooking = function (id, title) {
+      // Reset State
+      document.getElementById('booking-step-1').style.display = 'block';
+      document.getElementById('booking-step-2').style.display = 'none';
+      document.getElementById('booking-form').reset();
+
+      document.getElementById('selected-cab-id').value = id;
+      document.getElementById('selected-cab-title').value = title;
+      document.getElementById('modal-cab-name').textContent = title;
+      document.getElementById('booking-modal').classList.add('active');
+      loadQR(); // Preload QR (it will be visible in step 2)
+    }
+
+    window.closeModal = function () {
+      document.getElementById('booking-modal').classList.remove('active');
+    }
+
+    document.getElementById('booking-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Processing...';
+
+      try {
+        await addDoc(collection(db, 'bookings'), {
+          cabId: document.getElementById('selected-cab-id').value,
+          cabTitle: document.getElementById('selected-cab-title').value,
+          customerName: document.getElementById('customer-name').value,
+          customerPhone: document.getElementById('customer-phone').value,
+          travelDate: document.getElementById('travel-date').value,
+          pickup: document.getElementById('pickup-loc').value,
+          drop: document.getElementById('drop-loc').value,
+          status: 'pending_payment',
+          timestamp: new Date()
+        });
+
+        // Switch to Step 2
+        document.getElementById('booking-step-1').style.display = 'none';
+        document.getElementById('booking-step-2').style.display = 'block';
+
+      } catch (error) {
+        console.error("Booking Error:", error);
+        alert('Error: ' + error.message + '\n\nPlease ensure you have a stable internet connection or check Firestore rules.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Continue to Payment';
+      }
+    });
+
+    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+      document.getElementById('nav-menu').classList.toggle('active');
+    });
+
+    // Close modal on outside click
+    document.getElementById('booking-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'booking-modal') closeModal();
+    });
+
+    // Sticky Header Logic
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+  </script>
+
+  <!-- Floating Actions (WhatsApp & Call) -->
+  <div class="floating-actions">
+    <a href="tel:+918319920776" class="floating-btn btn-call" title="Call Us Now">📞</a>
+    <a href="https://wa.me/918319920776" target="_blank" class="floating-btn btn-whatsapp" title="WhatsApp Us">💬</a>
+  </div>
+</body>
+
+</html>

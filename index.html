@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A.S Tour & Travels - Not For Basic Travels</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-[#0F172A]">
+
+  <!-- Header -->
+  <header>
+    <div class="header-wrapper">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">✈️</span>
+        <span class="logo-text">A.S Tour & Travels</span>
+      </a>
+
+      <nav id="nav-menu">
+        <a href="index.html" class="active">Home</a>
+        <a href="rail-enquiry.html">Rail</a>
+        <a href="flight-enquiry.html">Flight</a>
+        <a href="packages.html">Packages</a>
+        <a href="cabs.html">Cabs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="header-cta sticky-cta"
+          onclick="document.querySelector('.enquiry-modal').style.display = 'flex'">Book Now</button>
+        <button class="header-cta hide-on-sticky"
+          onclick="document.querySelector('.enquiry-modal').style.display = 'flex'">Book Your Trip</button>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section Slider -->
+  <section class="hero-slider">
+    <div class="list">
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1600&q=80">
+        <div class="content">
+          <div class="author">KERALA</div>
+          <div class="title">GOD'S OWN COUNTRY</div>
+          <div class="topic">BACKWATERS</div>
+          <div class="des">
+            Experience the serene backwaters, lush tea plantations, and tranquil beaches of Kerala. A perfect blend of
+            nature and culture.
+          </div>
+          <div class="buttons">
+            <button onclick="scrollToEnquiry()">PLAN TRIP</button>
+            <button onclick="document.getElementById('tours').scrollIntoView({behavior: 'smooth'})">EXPLORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1524492707947-2f85a6e58c01?w=1600&q=80">
+        <div class="content">
+          <div class="author">AGRA</div>
+          <div class="title">SYMBOL OF LOVE</div>
+          <div class="topic">TAJ MAHAL</div>
+          <div class="des">
+            Visit the legendary Taj Mahal, a masterpiece of Mughal architecture and one of the Seven Wonders of the
+            World.
+          </div>
+          <div class="buttons">
+            <button onclick="scrollToEnquiry()">PLAN TRIP</button>
+            <button onclick="document.getElementById('tours').scrollIntoView({behavior: 'smooth'})">EXPLORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1548013146-72479768bbaa?w=1600&q=80">
+        <div class="content">
+          <div class="author">JAIPUR</div>
+          <div class="title">THE PINK CITY</div>
+          <div class="topic">PALACES</div>
+          <div class="des">
+            Immerse yourself in the royal heritage of Rajasthan. Explore majestic forts, vibrant markets, and rich
+            traditions.
+          </div>
+          <div class="buttons">
+            <button onclick="scrollToEnquiry()">PLAN TRIP</button>
+            <button onclick="document.getElementById('tours').scrollIntoView({behavior: 'smooth'})">EXPLORE</button>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=1600&q=80">
+        <div class="content">
+          <div class="author">GOA</div>
+          <div class="title">PARADISE FOR TRAVELERS</div>
+          <div class="topic">BEACHES</div>
+          <div class="des">
+            Relax on golden sands, enjoy vibrant nightlife, and experience unique Indo-Portuguese culture in India's
+            favorite destination.
+          </div>
+          <div class="buttons">
+            <button onclick="scrollToEnquiry()">PLAN TRIP</button>
+            <button onclick="document.getElementById('tours').scrollIntoView({behavior: 'smooth'})">EXPLORE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thumbnails -->
+    <div class="thumbnail">
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80">
+        <div class="content">
+          <div class="title">Kerala</div>
+          <div class="description">Backwaters</div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1524492707947-2f85a6e58c01?w=500&q=80">
+        <div class="content">
+          <div class="title">Agra</div>
+          <div class="description">Taj Mahal</div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1548013146-72479768bbaa?w=500&q=80">
+        <div class="content">
+          <div class="title">Jaipur</div>
+          <div class="description">Palaces</div>
+        </div>
+      </div>
+      <div class="item">
+        <img src="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=500&q=80">
+        <div class="content">
+          <div class="title">Goa</div>
+          <div class="description">Beaches</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrows -->
+    <div class="arrows"><button id="prev">
+        << /button><button id="next">></button></div>
+
+    <div class="time"></div>
+  </section>
+
+  <!-- Quick Enquiry Cards -->
+  <section style="padding: 4rem 2rem; background: #0B1C2D;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Start Your Journey Today</h2>
+        <p style="color: var(--text-muted);">Choose your travel style</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card" style="cursor: pointer;" onclick="window.location.href='rail-enquiry.html'">
+          <div class="card-icon">🚆</div>
+          <h3>Rail Enquiry</h3>
+          <p>Book premium rail tickets and packages across India</p>
+          <div style="margin-top: 1.5rem; color: var(--accent); font-weight: 600;">Get Quotes →</div>
+        </div>
+        <div class="card" style="cursor: pointer;" onclick="window.location.href='flight-enquiry.html'">
+          <div class="card-icon">✈️</div>
+          <h3>Flight Booking</h3>
+          <p>Exclusive flight deals and customized travel packages</p>
+          <div style="margin-top: 1.5rem; color: var(--accent); font-weight: 600;">Get Quotes →</div>
+        </div>
+        <div class="card" style="cursor: pointer;" onclick="window.location.href='cabs.html'">
+          <div class="card-icon">🚗</div>
+          <h3>Cab Services</h3>
+          <p>Premium transportation with professional drivers</p>
+          <div style="margin-top: 1.5rem; color: var(--accent); font-weight: 600;">Get Quotes →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Tours -->
+  <section style="padding: 5rem 2rem;" id="tours">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Tour Packages</h2>
+        <p style="color: var(--text-muted);">Handpicked luxury experiences</p>
+      </div>
+      <div class="grid grid-2" id="featured-tours">
+        <div class="skeleton" style="height: 300px; border-radius: 0.75rem;"></div>
+        <div class="skeleton" style="height: 300px; border-radius: 0.75rem;"></div>
+        <div class="skeleton" style="height: 300px; border-radius: 0.75rem;"></div>
+        <div class="skeleton" style="height: 300px; border-radius: 0.75rem;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section style="padding: 5rem 2rem; background: #0B1C2D;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose Us?</h2>
+        <p style="color: var(--text-muted);">Experience premium travel with excellence</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card">
+          <div class="card-icon">🏆</div>
+          <h3>Expert Planning</h3>
+          <p>Customized itineraries crafted by travel experts</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💎</div>
+          <h3>Premium Quality</h3>
+          <p>Handpicked hotels and exclusive experiences</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛡️</div>
+          <h3>Trust & Safety</h3>
+          <p>100% secure bookings with 24/7 support</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💰</div>
+          <h3>Best Value</h3>
+          <p>Competitive prices without compromising quality</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section style="padding: 5rem 2rem;">
+    <div class="container">
+      <div class="grid grid-4" style="text-align: center;">
+        <div>
+          <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;"><span
+              class="stat-counter" data-target="5000">0</span>+</div>
+          <p style="color: var(--text-muted);">Happy Travelers</p>
+        </div>
+        <div>
+          <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;"><span
+              class="stat-counter" data-target="250">0</span>+</div>
+          <p style="color: var(--text-muted);">Destinations</p>
+        </div>
+        <div>
+          <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;"><span
+              class="stat-counter" data-target="15">0</span>+</div>
+          <p style="color: var(--text-muted);">Years Experience</p>
+        </div>
+        <div>
+          <div style="font-size: 2.5rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">98%</div>
+          <p style="color: var(--text-muted);">Satisfaction Rate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section style="padding: 5rem 2rem; background: #0B1C2D;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Client Testimonials</h2>
+        <p style="color: var(--text-muted);">What our travelers say</p>
+      </div>
+      <div class="grid grid-3" id="testimonials-slider">
+        <div class="skeleton-avatar" style="height: 300px; border-radius: 0.75rem;"></div>
+        <div class="skeleton-avatar" style="height: 300px; border-radius: 0.75rem;"></div>
+        <div class="skeleton-avatar" style="height: 300px; border-radius: 0.75rem;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section style="padding: 3rem 2rem;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h3>Trusted Partnerships</h3>
+      </div>
+      <div
+        style="display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; opacity: 0.7;">
+        <span style="font-size: 1.5rem; font-weight: 700;">🏨</span>
+        <span style="font-size: 1.5rem; font-weight: 700;">✈️</span>
+        <span style="font-size: 1.5rem; font-weight: 700;">🚂</span>
+        <span style="font-size: 1.5rem; font-weight: 700;">🚗</span>
+        <span style="font-size: 1.5rem; font-weight: 700;">🏖️</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section style="padding: 5rem 2rem; background: linear-gradient(135deg, #0B1C2D, #1A2741); text-align: center;">
+    <div class="container">
+      <h2 style="margin-bottom: 1rem;">Ready to Travel Premium?</h2>
+      <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">Get personalized travel
+        recommendations from our experts</p>
+      <button class="btn btn-primary" onclick="document.querySelector('.enquiry-modal').classList.remove('hidden')">Get
+        Free Consultation</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h4>A.S Tour & Travels</h4>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">Premium travel experiences for discerning travelers.
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          📍 Shop No. 5, Nagar Nigam Market, Bus Stand, Indramani Nagar, Thatipur, Gwalior, MP 474005
+        </p>
+        <p style="margin-top: 0.5rem;">
+          <a href="https://www.google.com/maps/search/?api=1&query=A.S+Tour+and+travels+Gwalior" target="_blank"
+            style="color: var(--accent); font-size: 0.9rem;">Open in Google Maps ↗</a>
+        </p>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="rail-enquiry.html">Rail Booking</a></li>
+          <li><a href="flight-enquiry.html">Flight Booking</a></li>
+          <li><a href="packages.html">Tour Packages</a></li>
+          <li><a href="cabs.html">Cab Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="admin/login.html">Admin</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul>
+          <li>📧 <a href="mailto:info@astravels.com">info@astravels.com</a></li>
+          <li>📱 <a href="tel:+918319920776">+91 83199 20776</a></li>
+          <li>🕐 24/7 Support</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 A.S Tour & Travels. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Actions (WhatsApp & Call) -->
+  <div class="floating-actions">
+    <a href="tel:+918319920776" class="floating-btn btn-call" title="Call Us Now">📞</a>
+    <a href="https://wa.me/918319920776" target="_blank" class="floating-btn btn-whatsapp" title="WhatsApp Us">💬</a>
+  </div>
+
+  <!-- Booking Modal -->
+  <div id="booking-modal" class="modal-overlay"
+    style="position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+    <div
+      style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 1rem; padding: 2rem; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; color: var(--text);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h3 style="margin: 0;">Book Package</h3>
+        <button onclick="closeModal()"
+          style="background: none; border: none; font-size: 1.5rem; color: var(--text-muted); cursor: pointer;">×</button>
+      </div>
+
+      <div id="booking-step-1">
+        <form id="pkg-booking-form">
+          <input type="hidden" id="selected-pkg-id">
+          <input type="hidden" id="selected-pkg-title">
+
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Selected Package</label>
+            <p id="modal-pkg-name" style="color: var(--accent); font-size: 1.1rem; font-weight: 700;"></p>
+          </div>
+
+          <input type="text" id="customer-name-pkg" placeholder="Your Name" required>
+          <input type="tel" id="customer-phone-pkg" placeholder="Phone Number" required>
+          <div style="margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600;">Travel Date</div>
+          <input type="date" id="travel-date-pkg" required>
+
+          <input type="number" id="travelers-pkg" placeholder="Number of Travelers" required min="1">
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Continue to
+            Payment</button>
+        </form>
+      </div>
+
+      <div id="booking-step-2" style="display: none; text-align: center;">
+        <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+        <h3 style="color: var(--success); margin-bottom: 1rem;">Booking Details Submitted!</h3>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Please scan the QR code below to complete your
+          payment of <b>₹1000</b> (Booking Token).</p>
+
+        <div id="qr-container"
+          style="min-height: 200px; display: flex; align-items: center; justify-content: center; background: #fff; margin: 0 auto 1.5rem auto; width: 220px; padding: 10px; border-radius: 0.5rem; border: 1px solid var(--border);">
+          <p style="color: #64748b;">Loading QR...</p>
+        </div>
+
+        <button onclick="closeModal()" class="btn btn-primary" style="width: 100%; background: var(--secondary);">Done /
+          I have Paid</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enquiry Modal -->
+  <div class="enquiry-modal"
+    style="position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 2000; backdrop-filter: blur(4px);">
+    <div
+      style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 0.75rem; padding: 2rem; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div>
+          <h3 style="color: var(--accent); font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0;">Book
+            Your Trip</h3>
+          <div class="promise-tag" style="margin-top: 5px;">10 min me call back guarantee</div>
+        </div>
+        <button onclick="document.querySelector('.enquiry-modal').style.display = 'none'"
+          style="background: none; border: none; color: var(--text-muted); font-size: 2rem; cursor: pointer; line-height: 1;">×</button>
+      </div>
+      <form id="enquiry-form" style="display: flex; flex-direction: column;">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+
+        <label for="travel-date">Preferred Travel Date</label>
+        <input type="date" id="travel-date" name="travel-date" required>
+
+        <label for="travel-type">Travel Type</label>
+        <select id="travel-type" name="travel-type" required onchange="toggleEnquiryFields(this.value)">
+          <option value="">Select...</option>
+          <option value="rail">Rail</option>
+          <option value="flight">Flight</option>
+          <option value="package">Tour Package</option>
+          <option value="cab">Cab Service</option>
+        </select>
+
+        <!-- Dynamic Cab Fields -->
+        <div id="cab-extra-fields" style="display: none;">
+          <label for="enq-pickup">Pickup Location</label>
+          <input type="text" id="enq-pickup" name="pickup" placeholder="Enter pickup city/address">
+
+          <label for="enq-drop">Drop Location</label>
+          <input type="text" id="enq-drop" name="drop" placeholder="Enter drop city/address">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module">
+    import { db } from './js/firebase.js';
+    import { loadFeaturedTours } from './js/packages.js';
+    import { loadTestimonials } from './js/testimonials.js';
+    import { collection, addDoc, onSnapshot, query, orderBy, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+    // Load data
+    await loadFeaturedTours('#featured-tours');
+    await loadTestimonials('#testimonials-slider');
+
+    // --- HERO SLIDER LOGIC ---
+    const nextDom = document.getElementById('next');
+    const prevDom = document.getElementById('prev');
+    const carouselDom = document.querySelector('.hero-slider');
+    const SliderDom = carouselDom.querySelector('.hero-slider .list');
+    const thumbnailBorderDom = document.querySelector('.hero-slider .thumbnail');
+    const timeDom = document.querySelector('.hero-slider .time');
+
+    // Load Hero Slides from Firestore
+    onSnapshot(query(collection(db, 'hero_slides'), orderBy('createdAt', 'desc')), (snapshot) => {
+      if (snapshot.empty) return; // Keep hardcoded if empty
+
+      const slides = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+
+      // Render Slides
+      SliderDom.innerHTML = slides.map(s => `
+        <div class="item">
+          <img src="${s.imageUrl}">
+          <div class="content">
+            <div class="author">${s.author}</div>
+            <div class="title">${s.title}</div>
+            <div class="topic">${s.topic}</div>
+            <div class="des">${s.des || ''}</div>
+            <div class="buttons">
+              <button onclick="scrollToEnquiry()">PLAN TRIP</button>
+              <button onclick="document.getElementById('tours').scrollIntoView({behavior: 'smooth'})">EXPLORE</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Render Thumbnails
+      thumbnailBorderDom.innerHTML = slides.map(s => `
+        <div class="item">
+          <img src="${s.thumbnailUrl}">
+          <div class="content">
+            <div class="title">${s.title.split(' ')[0]}</div>
+            <div class="description">${s.topic}</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Re-initialize thumbnail arrangement
+      let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
+      if (thumbnailItemsDom.length > 0) {
+        thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+      }
+    });
+
+
+    let timeRunning = 3000;
+    let timeAutoNext = 7000;
+    let runTimeOut;
+    let runNextAuto = setTimeout(() => {
+      nextDom.click();
+    }, timeAutoNext);
+
+    function showSlider(type) {
+      let itemSlider = document.querySelectorAll('.hero-slider .list .item');
+      let itemThumbnail = document.querySelectorAll('.hero-slider .thumbnail .item');
+
+      if (type === 'next') {
+        SliderDom.appendChild(itemSlider[0]);
+        thumbnailBorderDom.appendChild(itemThumbnail[0]);
+        carouselDom.classList.add('next');
+      } else {
+        SliderDom.prepend(itemSlider[itemSlider.length - 1]);
+        thumbnailBorderDom.prepend(itemThumbnail[itemThumbnail.length - 1]);
+        carouselDom.classList.add('prev');
+      }
+
+      clearTimeout(runTimeOut);
+      runTimeOut = setTimeout(() => {
+        carouselDom.classList.remove('next');
+        carouselDom.classList.remove('prev');
+      }, timeRunning);
+
+      clearTimeout(runNextAuto);
+      runNextAuto = setTimeout(() => {
+        nextDom.click();
+      }, timeAutoNext);
+    }
+
+    nextDom.onclick = () => showSlider('next');
+    prevDom.onclick = () => showSlider('prev');
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+      document.getElementById('nav-menu').classList.toggle('active');
+    });
+
+    // --- QR Code Logic ---
+    async function loadQR() {
+      try {
+        const docSnap = await getDoc(doc(db, 'settings', 'payment'));
+        if (docSnap.exists() && docSnap.data().qrUrl) {
+          document.getElementById('qr-container').innerHTML = `
+            <img src="${docSnap.data().qrUrl}" alt="Payment QR" style="width: 100%; height: 100%; object-fit: contain;">
+          `;
+        } else {
+          document.getElementById('qr-container').innerHTML = `<p>QR Not Available</p>`;
+        }
+      } catch (error) {
+        console.error("QR Load Error:", error);
+      }
+    }
+
+    // --- Modal Logic ---
+    window.enquirePackage = function (id, title) {
+      document.getElementById('booking-step-1').style.display = 'block';
+      document.getElementById('booking-step-2').style.display = 'none';
+      document.getElementById('pkg-booking-form').reset();
+
+      document.getElementById('selected-pkg-id').value = id;
+      document.getElementById('selected-pkg-title').value = title;
+      document.getElementById('modal-pkg-name').textContent = title || "Selected Tour Package";
+
+      document.getElementById('booking-modal').style.display = 'flex';
+      loadQR();
+    };
+
+    window.closeModal = function () {
+      document.getElementById('booking-modal').style.display = 'none';
+    };
+
+    document.getElementById('pkg-booking-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+
+      try {
+        await addDoc(collection(db, 'package_bookings'), {
+          packageId: document.getElementById('selected-pkg-id').value,
+          packageTitle: document.getElementById('selected-pkg-title').value,
+          customerName: document.getElementById('customer-name-pkg').value,
+          customerPhone: document.getElementById('customer-phone-pkg').value,
+          travelDate: document.getElementById('travel-date-pkg').value,
+          travelers: document.getElementById('travelers-pkg').value,
+          status: 'pending_payment',
+          timestamp: new Date()
+        });
+
+        // Show Step 2
+        document.getElementById('booking-step-1').style.display = 'none';
+        document.getElementById('booking-step-2').style.display = 'block';
+
+      } catch (error) {
+        console.error(error);
+        alert('Error submitting booking: ' + error.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Continue to Payment';
+      }
+    });
+
+    window.toggleEnquiryFields = function (type) {
+      const cabFields = document.getElementById('cab-extra-fields');
+      if (type === 'cab') {
+        cabFields.style.display = 'block';
+      } else {
+        cabFields.style.display = 'none';
+      }
+    };
+
+    document.getElementById('enquiry-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+
+      const type = document.getElementById('travel-type').value;
+      const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        travelDate: document.getElementById('travel-date').value,
+        travelType: type,
+        timestamp: new Date()
+      };
+
+      if (type === 'cab') {
+        data.pickup = document.getElementById('enq-pickup').value;
+        data.drop = document.getElementById('enq-drop').value;
+      }
+
+      try {
+        await addDoc(collection(db, 'enquiries'), data);
+        alert('Enquiry sent successfully! We will contact you soon.');
+        document.querySelector('.enquiry-modal').style.display = 'none';
+        e.target.reset();
+        toggleEnquiryFields(''); // reset extra fields
+      } catch (err) {
+        console.error(err);
+        alert('Error: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send Enquiry';
+      }
+    });
+
+    // Smooth scroll for stats counter
+    const observerOptions = {
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counters = document.querySelectorAll('.stat-counter');
+          counters.forEach(counter => {
+            const target = parseInt(counter.dataset.target);
+            const increment = target / 50;
+            let current = 0;
+
+            const updateCount = () => {
+              current += increment;
+              if (current < target) {
+                counter.textContent = Math.floor(current);
+                requestAnimationFrame(updateCount);
+              } else {
+                counter.textContent = target;
+              }
+            };
+
+            updateCount();
+          });
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const statsSection = document.querySelector('[data-target]')?.closest('section');
+    if (statsSection) observer.observe(statsSection);
+
+    function scrollToEnquiry() {
+      const modal = document.querySelector('.enquiry-modal');
+      modal.style.display = 'flex';
+    }
+
+    window.scrollToEnquiry = scrollToEnquiry;
+
+    // --- CONVERSION LOGIC ---
+
+    // Sticky Header
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+
+    // Exit Intent Popup
+    let exitModalShown = false;
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY < 0 && !exitModalShown) {
+        const exitModal = document.getElementById('exit-intent-modal');
+        if (exitModal) exitModal.classList.add('active');
+        exitModalShown = true;
+      }
+    });
+
+    window.closeExitModal = () => {
+      const exitModal = document.getElementById('exit-intent-modal');
+      if (exitModal) exitModal.classList.remove('active');
+    };
+  </script>
+  <!-- Exit Intent Modal -->
+  <div id="exit-intent-modal" class="exit-modal">
+    <div class="exit-content">
+      <button class="exit-close" onclick="window.closeExitModal()">×</button>
+      <span class="exit-icon">🎁</span>
+      <h2 style="color: var(--accent); margin-bottom: 1rem;">Wait! Don't Miss Out!</h2>
+      <p style="margin-bottom: 2rem;">Get an exclusive 10% discount on your first booking if you enquire now!</p>
+      <button class="btn btn-primary" style="width: 100%;" onclick="window.closeExitModal(); window.scrollToEnquiry();">
+        Claim My 10% Discount
+      </button>
+      <p style="margin-top: 1.5rem; font-size: 0.8rem;">We promise to call you back within 10 minutes!</p>
+    </div>
+  </div>
+
+</body>
+
+</html>
